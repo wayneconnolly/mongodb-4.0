@@ -64,7 +64,7 @@ You can now test your new credentials:
 
     mongo mydatabase -u user -p mypass
 
-Note: with mongo 3.x an admin user is also created with the same credentials
+Note: with mongo 4.x an admin user is also created with the same credentials
 
     mongo admin -u user -p mypass
 
@@ -81,7 +81,7 @@ By default is "yes".
 Run MongoDB with a specific storage engine
 ------------------------------------------
 
-In MongoDB 3.0 there is a new environment variable `STORAGE_ENGINE` to specific the mongod storage driver:
+In MongoDB 4.0 there is a new environment variable `STORAGE_ENGINE` to specific the mongod storage driver:
 
         docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no -e STORAGE_ENGINE=mmapv1 dubc/mongodb-4.0
 
@@ -91,7 +91,7 @@ By default is "wiredTiger".
 Change the default oplog size
 -----------------------------
 
-In MongoDB 3.0 the variable `OPLOG_SIZE` can be used to specify the mongod oplog size in megabytes:
+In MongoDB 4.0 the variable `OPLOG_SIZE` can be used to specify the mongod oplog size in megabytes:
 
         docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no -e OPLOG_SIZE=50 dubc/mongodb-4.0
 
