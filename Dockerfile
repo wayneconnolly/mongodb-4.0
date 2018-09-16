@@ -14,7 +14,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
     echo "mongodb-org-shell hold" | dpkg --set-selections && \
     echo "mongodb-org-mongos hold" | dpkg --set-selections && \
     echo "mongodb-org-tools hold" | dpkg --set-selections
-RUN mkdir /var/log/mongodb && touch /var/log/mongodb/mongod.log && chmod 755 /var/log/mongodb/mongod.log
+RUN mkdir /var/log/mongodb
 VOLUME /data/db
 
 ENV AUTH yes
