@@ -35,7 +35,7 @@ fi
 
 echo "=> Done!"
 touch /data/db/mongodb_password_set
-
+echo "$PASS" > /data/db/mongodb_password_set
 echo "========================================================================"
 echo "You can now connect to this MongoDB server using:"
 echo ""
