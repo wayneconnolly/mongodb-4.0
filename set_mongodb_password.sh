@@ -2,8 +2,17 @@
 
 USER=${MONGODB_USER:-"admin"}
 DATABASE=${MONGODB_DATABASE:-"admin"}
-PASS=${MONGODB_PASS:-$(pwgen -s 12 1)}
-_word=$( [ ${MONGODB_PASS} ] && echo "preset" || echo "random" )
+
+if [ -z ${MONGODB_PASS+x} ] && [ -z ${MONGODB_PASS_FILE+x} ]; then 
+    PASS=$(pwgen -s 12 1)
+    _word="random"
+elif [ ${MONGODB_PASS+x} ]; then 
+    PASS=${MONGODB_PASS}
+    _word="preset"
+elif [ ${MONGODB_PASS_FILE+x} ]; then 
+    PASS="$(< "${!MONGODB_PASS_FILE}")" 
+    _word="preset (from secret)"
+fi
 
 RET=1
 while [[ RET -ne 0 ]]; do
