@@ -3,14 +3,14 @@
 USER=${MONGODB_USER:-"admin"}
 DATABASE=${MONGODB_DATABASE:-"admin"}
 
-if [ -z ${MONGODB_PASS+x} ] && [ -z ${MONGODB_PASS_FILE+x} ]; then 
+if [ -z ${MONGODB_PASS+x} ] && [ -z ${MONGODB_PASS_FILE+x} ]; then
     PASS=$(pwgen -s 12 1)
     _word="random"
-elif [ "$MONGODB_PASS" ]; then 
+elif [ "$MONGODB_PASS" ]; then
     PASS="$MONGODB_PASS"
     _word="preset"
-elif [ "$MONGODB_PASS_FILE" ]; then 
-    PASS="$(< "${!MONGODB_PASS_FILE}")" 
+elif [ "$MONGODB_PASS_FILE" ]; then
+    PASS="$(< "${MONGODB_PASS_FILE}")"
     _word="preset (from secret)"
 fi
 
