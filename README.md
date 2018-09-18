@@ -47,6 +47,13 @@ set the environment variable `MONGODB_PASS` to your specific password when runni
 
         docker run -d -p 27017:27017 -p 28017:28017 -e MONGODB_PASS="mypass" --name mongo-4.0 dubc/mongodb-4.0
 
+If you want to use a preset secret password instead of a randomly generated one, you can
+set the environment variable `MONGODB_PASS_FILE` or to your secret located at `/run/secrets/MONGODB_PASS` when running the container:
+
+        docker run -d -p 27017:27017 -p 28017:28017 -e MONGODB_PASS_FILE="/run/secrets/MONGODB_PASS" --name mongo-4.0 dubc/mongodb-4.0
+
+NOTE: Secret must be named MONGODB_PASS in docker and exist at /run/secrets/MONGODB_PASS at container start.
+
 You can now test your new admin password:
 
         mongo admin -u admin -p mypass
